@@ -1,0 +1,63 @@
+﻿@page
+@model RecipeApp.Areas.Identity.Pages.Account.Manage.FavouriteRecipesModel
+
+@{
+    int flag = 1;
+}
+<style>
+
+    .form-control-borderless {
+        border: none;
+    }
+
+        .form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+            border: none;
+            outline: none;
+            box-shadow: none;
+        }
+</style>
+
+<h3>Your Favorite Recipes</h3>
+<div class="container">
+    <div class="row">
+        @if (Model.Recipe != null && Model.Recipe.Any())
+        {
+                // Display the favorite recipes
+            @foreach (var favori in Model.Favori2)
+            {
+                var matchingRecipe = Model.Recipe.FirstOrDefault(r => r.Id == favori.RecipeId);
+
+                if (matchingRecipe != null)
+                {
+                    @if (matchingRecipe.UserId == Model.userId)
+                    {
+                        <div class="col-md-4 mb-4">
+                            <div class="card" style="width: 15rem;">
+                                <img src="@Html.DisplayFor(modelItem => matchingRecipe.ImageUrl)" alt="Recipe Image" />
+                                <div class="card-body">
+                                    <h5 class="card-title">@Html.DisplayFor(modelItem => matchingRecipe.Title)</h5>
+                                    <p class="card-text">@Html.DisplayFor(modelItem => matchingRecipe.Description)</p>
+
+                                    <a class="btn btn-outline-secondary btn-sm" asp-page="./Edit" asp-route-id="@matchingRecipe.Id">Edit</a>
+                                    <a class="btn btn-outline-secondary btn-sm" asp-page="./Delete" asp-route-id="@matchingRecipe.Id">Delete</a>
+
+                                    <a class="btn btn-outline-secondary btn-sm" asp-page="./Details" asp-route-id="@matchingRecipe.Id">Details</a>
+                                </div>
+                            </div>
+                        </div>
+                        flag = 0;
+                    }
+                }
+            }
+            if (flag != 0)
+            {
+                <p>No favorite recipes found.</p>
+            }
+        }
+        else
+        {
+            <p>No favorite recipes found.</p>
+        }
+
+    </div>
+</div>
