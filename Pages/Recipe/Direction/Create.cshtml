@@ -1,0 +1,71 @@
+﻿@page
+@model RecipeApp.Pages.Recipe.Direction.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+<link href="~/css/tümeditler.css" rel="stylesheet" />
+<h1>Create</h1>
+
+<h4>Direction</h4>
+<hr />
+
+<div id="myDIV" class="row">
+    <div class="col-md-4">
+        <section class="login">
+            <div class="login_box">
+                <div class="left">
+                    <div class="top_link"></div>
+                    <div class="contact">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <form method="post">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="form-group">
+                                        <label asp-for="StepNumber" class="control-label"></label>
+                                        <input asp-for="StepNumber" class="form-control" />
+                                        <span asp-validation-for="StepNumber" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Description" class="control-label"></label>
+                                        <input asp-for="Description" class="form-control" />
+                                        <span asp-validation-for="Description" class="text-danger"></span>
+                                    </div>
+                                    @* <div class="form-group">
+                                    <label asp-for="Direction.RecipeId" class="control-label"></label>
+                                    <input asp-for="Direction.RecipeId" class="form-control" />
+                                    <span asp-validation-for="Direction.RecipeId" class="text-danger"></span>
+                                    </div>*@
+                                    <div class="form-group">
+                                        <input type="hidden" asp-for="id" />
+                                        <span asp-validation-for="id" class="text-danger"></span>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <input type="submit" value="Create" class="btn btn-primary" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right">
+                    <img src="~/images/logo.jpg" />
+                </div>
+            </div>
+        </section>
+    </div>
+
+</div>
+
+
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,87 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@*<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>*@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Receipes Webpage</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="StyleSheet.css" rel="stylesheet" />
+    <style>
+        div.cirle img {
+            opacity: 0.7;
+            border-radius: 50%;
+            margin: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    @*<div class="w3-top w3-bar w3-white w3-padding w3-card w3-wide">
+        <a href="#home" class="w3-bar-item w3-button">FOOD &amp; COOK</a>
+        <!-- Right-sided navbar links. Hide them on small screens -->
+        <div class="w3-right w3-hide-small">
+            <a href="#about" class="w3-bar-item w3-button">About</a>
+            <a href="#menu" class="w3-bar-item w3-button">Menu</a>
+            <a href="Login.html" class="w3-bar-item w3-button">Login</a>
+        </div>
+    </div>*@
+
+    <!-- Start Content -->
+    <div id="home" class="w3-content">
+        <!-- Image -->
+        <img src="Images/Skeleton.jpg" style="width:100%">
+
+        <div class="w3-display-middle w3-margin-top w3-center">
+            <h1 class="w3-xxlarge w3-text-white w3-wide">
+                <span class="w3-padding w3-grey w3-opacity-min"><b>HEALTHY COOKING</b></span>
+            </h1>
+        </div>
+    </div>
+
+    <h3>
+        <i>
+            <br><br>
+            Clean, Healthy, and Delicious Recipes<br><br>
+            Whether you're after an old favourite or inspiration for something new, we have the perfect recipe.
+        </i>
+    </h3>
+
+    <h3><br> What are your favorite meals?</h3>
+
+    <div class="cirle">
+        <img src="Images/Cream-of-Broccoli-Soup.jpg" alt="Soups" width="200" height="201" left="204" top="709" >
+        <img src="Images/a2.jpg" alt="Appetizers" width="200" height="201" left="486" top="799">
+        <img src="Images/dinner.jpg" alt="Main Courses" width="200" height="201" left="768" top="799">
+        <img src="Images/d.jpg" alt="Desserts" width="200" height="201" left="1050px" top="799px">
+
+        @*<a href="soup.html">
+            <img src="Images/Cream-of-Broccoli-Soup.jpg" alt="Soups" width="200" height="201" left="278" top="642" border-radius="0">
+        </a>
+        <a href="Appetizers.html">
+            <img src="Images/a2.jpg" alt="Appetizers" width="200" height="201" left="602" top="642" border-radius="0">
+        </a>
+        <a href="MainCourses.html">
+            <img src="Images/dinner.jpg" alt="Main Courses" width="200" height="201" left="926" top="642" border-radius="0">
+        </a>
+        <a href="Desserts.html">
+            <img src="Images/d.jpg" alt="Desserts" width="200" height="201" left="1250" top="655" border-radius="0">
+        </a>*@
+    </div>
+
+  
+</body>
+</html>
+
+
+

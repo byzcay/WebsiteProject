@@ -1,0 +1,71 @@
+﻿@page
+@model RecipeApp.Pages.Recipe.Ingredient.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<link href="~/css/tümeditler.css" rel="stylesheet" />
+<h1>Edit</h1>
+
+<h4>Ingredient</h4>
+<
+<div id="myDIV" class="row">
+    <div class="col-md-4">
+        <section class="login">
+            <div class="login_box">
+                <div class="left">
+                    <div class="top_link"></div>
+                    <div class="contact">
+                        <form method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="Ingredient.Id" />
+                            <div class="form-group">
+                                <label asp-for="Ingredient.Name" class="control-label"></label>
+                                <input asp-for="Ingredient.Name" class="form-control" />
+                                <span asp-validation-for="Ingredient.Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Ingredient.Quantity" class="control-label"></label>
+                                <input asp-for="Ingredient.Quantity" class="form-control" />
+                                <span asp-validation-for="Ingredient.Quantity" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Ingredient.Unit" class="control-label"></label>
+                                <input asp-for="Ingredient.Unit" class="form-control" />
+                                <span asp-validation-for="Ingredient.Unit" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Ingredient.Calories" class="control-label"></label>
+                                <input asp-for="Ingredient.Calories" class="form-control" />
+                                <span asp-validation-for="Ingredient.Calories" class="text-danger"></span>
+                            </div>
+                            @*<div class="form-group">
+                                <label asp-for="Ingredient.RecipeId" class="control-label"></label>
+                                <input asp-for="Ingredient.RecipeId" class="form-control" />
+                                <span asp-validation-for="Ingredient.RecipeId" class="text-danger"></span>
+                            </div>*@
+                            <div class="form-group">
+                                <input type="submit" value="Save" class="btn btn-primary" />
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+                <div class="right">
+                    <img src="~/images/logo.jpg" />
+                </div>
+            </div>
+        </section>
+    </div>
+
+</div>
+
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

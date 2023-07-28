@@ -1,0 +1,54 @@
+﻿@page
+@model RecipeApp.Pages.Recipe.Comment.IndexModel 
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Recent comments</h1>
+<p>
+    
+    <a class="btn btn-outline-secondary"  asp-page="./Create" asp-route-id=@ViewData["id"]>Create New</a>
+</p>
+
+<section style="background-color: #ad655f;">
+    <div class="container my-5 py-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="card text-dark">
+                    <div class="card-body p-4">
+                        <p class="fw-light mb-4 pb-2">Latest Comments section by users</p>
+                        @foreach (var item in Model.Comment)
+                        {
+                            <div class="d-flex flex-start">
+                                <img class="rounded-circle shadow-1-strong me-3"
+                                src="~/images/user1.jpg" ,asp-for="Picture" width="70" height="70" />
+                                <div>
+                                    <h6 class="fw-bold mb-1">Beyza Çay</h6>
+                                    <div class="d-flex align-items-center mb-3">
+                                        <p class="mb-0">
+                                            June 11, 2023
+                                        </p>
+                                        <a asp-page="./Edit" asp-route-id="@item.Id"><i class="fa-sharp fa-light fa-pen-to-square"></i></a>
+                                        @*<a href="#!" class="link-muted"><i class="fas fa-heart ms-2"></i></a>*@
+                                        <a asp-page="./Delete" asp-route-id="@item.Id" class="link-muted"><i class="fa fa-trash-o ms-2" aria-hidden="true"></i></a>
+                                    </div>
+                                    @*<p class="fw-bold mb-1">
+                                       Beyza Çay
+                                    </p>*@
+                                    <p class="mb-0">
+                                        @Html.DisplayFor(modelItem => item.Content)
+                                    </p>
+                                    <p class="mb-0">
+                                        @Html.DisplayFor(modelItem => item.RecipeId)
+                                    </p>
+                                </div>
+                            </div>
+                            <hr class="my-0" />
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

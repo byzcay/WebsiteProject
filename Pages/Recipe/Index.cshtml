@@ -1,0 +1,136 @@
+﻿@page "{searchString?}"
+@model RecipeApp.Pages.Recipe.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    int i = 0;
+    string rate = "";
+}
+@*<link href="~/css/profile.css" rel="stylesheet" />*@
+<link href="~/css/dropdown.css" rel="stylesheet" />
+
+<h1>RECIPES</h1>
+
+<style>
+   
+    .form-control-borderless {
+        border: none;
+    }
+
+        .form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+            border: none;
+            outline: none;
+            box-shadow: none;
+        }
+</style>
+@*<head>
+    <!-- Diğer head içeriği -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0iFqzG4KEN2Wx0inHky4F5KMMS+KxkcJ5TI5v2Z4BbGOkrFtEkBQLMZwvl" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZU1zLP3fyE1Q6J8e2+xt/iq6w6d4xyXhqMb7j8p8EWEo3" crossorigin="anonymous"></script>
+</head>*@
+
+<form>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+            <form class="card card-sm">
+                <div class="card-body row no-gutters align-items-center">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="col">
+                            <input class="form-control form-control-lg form-control-borderless" type="text" placeholder="Search topics or keywords" asp-for="SearchString" />
+                        </div>
+                        <!--end of col-->
+                        <div class="d-flex mx-2">
+                            <div class="col-auto">
+                                <button class="btn btn-outline-secondary" value="Filter" type="submit">Search</button>
+                            </div>
+                            <!--end of col-->
+                            <div class="col-auto mx-2">
+                                <button class="btn btn-outline-secondary" value="Filter" type="submit" asp-page="Create">Create New</button>
+                            </div>
+                            <!--end of col-->
+                            <div class="dropdown mx-2">
+                                <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Sort by Calories
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <button class="dropdown-item" value="filter" type="submit">Increasing Order</button>
+                                    <button class="dropdown-item" value="filter" type="submit">Decreasing Order</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                   
+                </div>
+            </form>
+        </div>
+        <!--end of col-->
+    </div>
+</form>
+
+<div class="container">
+    <div class="row">
+    @foreach (var item in Model.Recipe)
+    {
+                <div class="col-md-4 mb-4">
+                    <div class="card" style="width: 25rem;">
+                    <img class="recipe-image" data-image-url="@item.ImageUrl" style="width: 400px; height: 400px;" />
+                        <div class="card-body">
+                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
+                            <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+                            <p>
+                        @if (Model.RecipeAverageRatingsList[i] == 0.0)
+                        {
+                            rate = "No Rating";
+                            i++;
+                        }
+                        else
+                        {
+                            rate = "Average rating: " + Model.RecipeAverageRatingsList[i].ToString() + " out of 5";
+                            i++;
+                        }
+                        @rate
+                                <br/>
+
+                            </p>
+
+
+                    @if (item.UserId == Model.userId)
+                    {
+                        <a class="btn btn-outline-secondary btn-sm" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn btn-outline-secondary btn-sm" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>                        
+                    }
+                    <a class="btn btn-outline-secondary btn-sm" asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                    <div>
+                    <form method="post">
+                        <div class="form-group">
+                        <button class="btn btn-outline-secondary btn-sm" type="submit">Favorites</button>
+                        <input name="id" type="hidden" value="@item.Id" />
+                        <span asp-validation-for="id" class="text-danger"></span>
+                        </div>
+                    </form>
+                    </div>
+
+                    </div>
+                    </div>
+                </div>
+
+    }
+
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function () {
+                var imageElements = document.getElementsByClassName("recipe-image");
+                for (var i = 0; i < imageElements.length; i++) {
+                    var imageUrl = imageElements[i].getAttribute("data-image-url");
+                    imageElements[i].src = imageUrl;
+                }
+            });
+        </script>
+
+
+    </div>
+</div>
+

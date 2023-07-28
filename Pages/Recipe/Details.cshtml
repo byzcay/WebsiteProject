@@ -1,0 +1,136 @@
+﻿@page
+@model RecipeApp.Pages.Recipe.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+<link href="~/css/details.css" rel="stylesheet" />
+
+<link href="~/css/jquery.rateyo.min.css" rel="stylesheet" />
+
+<style>
+    .container {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .image {
+        margin-right: 20px;
+    }
+
+        .image img {
+            width: 400px;
+            height: 400px;
+            object-fit: cover;
+        }
+</style>
+
+    <h1>Recipe Details</h1>
+    <div>
+        <hr />
+    <div class="container">
+        <div class="image">
+            <img src="@Model.Recipe.ImageUrl" alt="Recipe Image" />
+        </div>
+        <div class="text">
+            <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Recipe.Title)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Recipe.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Recipe.Description)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Recipe.Description)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Recipe.Cuisine)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Recipe.Cuisine)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Recipe.DifficultyLevel)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Recipe.DifficultyLevel)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Recipe.PreparationTime)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Recipe.PreparationTime)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Recipe.CookingTime)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Recipe.CookingTime)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Recipe.Servings)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Recipe.Servings)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Recipe.Category)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Recipe.Category)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Recipe.TotalCalories)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Recipe.TotalCalories)
+            </dd>
+        </dl>
+    
+        <div class="mt-4 mb-4">
+            <a class="btn btn-outline-secondary btn-sm" asp-area="" asp-page="./Comment/Index" asp-route-id="@Model.Recipe?.Id">Comments</a>
+            <a class="btn btn-outline-secondary btn-sm" asp-area="" asp-page="./Direction/Index" asp-route-id="@Model.Recipe?.Id">Direction</a>
+            <a class="btn btn-outline-secondary btn-sm" asp-area="" asp-page="./Ingredient/Index" asp-route-id="@Model.Recipe?.Id">Ingredient</a>
+            <a class="btn btn-outline-secondary btn-sm" asp-page="./Edit" asp-route-id="@Model.Recipe?.Id">Edit</a>
+            <a class="btn btn-outline-secondary btn-sm" asp-page="./Index">Back to List</a>
+        </div>
+        <div>
+            <form method="post">
+                <div id="rateIt"></div>
+            </hr>
+                <div>
+                    <button type="submit" class="btn btn-outline-secondary" id="getRating">Rate it!</button>
+                    <input name="_rate" type="hidden" id="rating" />
+                    
+                </div>
+            </form>
+
+
+            <script src="~/js/jquery.min.js"></script>
+            <script src="~/js/jquery.rateyo.min.js"></script>
+
+            <script type="text/javascript">
+                $(function () {
+                    var $rateYo = $("#rateIt").rateYo({
+                        rating: 0,
+                        fullStar: true,
+                        onChange: function (rating, rateYoInstance) {
+                            $('#rating').val(rating);
+                        }
+                    });
+
+                    $("#getRating").click(function () {
+
+                        var rating = $rateYo.rateYo("rating");
+                    });
+                });
+            </script>
+        </div>
+         </div>
+    </div>
+
+    </div>

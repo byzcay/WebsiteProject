@@ -1,0 +1,60 @@
+﻿@page 
+@model RecipeApp.Pages.Recipe.Comment.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+
+}
+<hr />
+
+<section style="background-color: #ad655f;">
+    <div class="container my-5 py-5 text-dark">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-6">
+                <form method="post">
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div class="d-flex flex-start w-100">
+                                <img class="rounded-circle shadow-1-strong me-3"
+                                src="~/images/user1.jpg"  alt="avatar" width="65"
+                                 height="65" />
+                            <div class="w-100">
+                                <h5>Add a comment</h5>
+                                <div class="form-group">
+                                    <input asp-for="Content" class="form-control" />
+                                    <label asp-for="Content" class="form-label" >What is your view?</label>
+                                </div>
+                                <div class="form-group">
+                                        <input type="hidden" asp-for="Comment.UserId" class="form-control" />
+                                        <span asp-validation-for="Comment.UserId" class="text-danger"></span>
+                                    </div>
+                                <div class="form-group">
+                                        <input type="hidden" asp-for="id" />
+                                        <span asp-validation-for="id" class="text-danger"></span>
+                                </div>
+                            
+                                <div class="d-flex justify-content-between mt-3">
+                                    <button type="submit" class="btn btn-primary">
+                                        Send <i class="fas fa-long-arrow-alt-right ms-1"></i>
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+                          
