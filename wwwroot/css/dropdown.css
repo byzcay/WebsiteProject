@@ -1,0 +1,60 @@
+﻿
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown toggle button */
+.dropdown-toggle {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    background-color: transparent;
+    ;
+    cursor: pointer;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    display: none;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    background-color: #f0f0f0;
+    ;
+    border: 1px solid #ccc;
+}
+
+/* Show dropdown menu on hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Dropdown menu item */
+.dropdown-item {
+    display: block;
+    padding: 0.25rem 1rem;
+    color: #333;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+    /* Dropdown menu item hover effect */
+    .dropdown-item:hover {
+        background-color: #f0f0f0;
+    }
+
+
+.d-flex {
+    display: flex;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
